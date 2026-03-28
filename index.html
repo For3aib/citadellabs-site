@@ -10,10 +10,12 @@
     p.tagline { color: #666; font-size: 18px; margin-bottom: 40px; }
     .logo { width: 80px; height: 80px; border-radius: 16px; margin-bottom: 16px; }
     .apps { text-align: left; margin: 0 auto; max-width: 400px; }
-    .app { margin-bottom: 24px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; }
-    .app h2 { font-size: 18px; margin: 0 0 4px 0; }
-    .app p { margin: 0; color: #666; font-size: 14px; }
-    .app a { display: inline-block; margin-top: 8px; color: #007AFF; text-decoration: none; font-size: 14px; margin-right: 16px; }
+    .app { margin-bottom: 24px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; display: flex; gap: 16px; align-items: flex-start; }
+    .app-icon { width: 56px; height: 56px; border-radius: 12px; flex-shrink: 0; }
+    .app-info { flex: 1; }
+    .app-info h2 { font-size: 18px; margin: 0 0 4px 0; }
+    .app-info p { margin: 0; color: #666; font-size: 14px; }
+    .app-info a { display: inline-block; margin-top: 8px; color: #007AFF; text-decoration: none; font-size: 14px; margin-right: 16px; }
     a:hover { text-decoration: underline; }
     .footer { margin-top: 60px; font-size: 14px; color: #888; }
     .footer a { color: #888; }
@@ -26,16 +28,22 @@
 
   <div class="apps">
     <div class="app">
-      <h2>Rebill</h2>
-      <p>Track your subscriptions. See what you're really spending.</p>
-      <a href="https://apps.apple.com/app/id6760693339">App Store</a>
-      <a href="/rebill-privacy">Privacy Policy</a>
+      <img src="rebill-icon.png" alt="Rebill" class="app-icon">
+      <div class="app-info">
+        <h2>Rebill</h2>
+        <p>Track your subscriptions. See what you're really spending.</p>
+        <a href="https://apps.apple.com/app/id6760693339">App Store</a>
+        <a href="/rebill-privacy">Privacy Policy</a>
+      </div>
     </div>
     <div class="app">
-      <h2>BillKeep</h2>
-      <p>Smart bill tracker with AI-powered receipt scanning.</p>
-      <a href="https://apps.apple.com/app/id6761000879">App Store</a>
-      <a href="/billkeep-privacy">Privacy Policy</a>
+      <img src="billkeep-icon.png" alt="BillKeep" class="app-icon">
+      <div class="app-info">
+        <h2>BillKeep</h2>
+        <p>Smart bill tracker with AI-powered receipt scanning.</p>
+        <a href="https://apps.apple.com/app/id6761000879">App Store</a>
+        <a href="/billkeep-privacy">Privacy Policy</a>
+      </div>
     </div>
   </div>
 
