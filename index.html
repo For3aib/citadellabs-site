@@ -1,336 +1,244 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Citadel Labs</title>
-<meta name="description" content="Quietly useful iOS apps.">
-<meta property="og:title" content="Citadel Labs">
-<meta property="og:description" content="Quietly useful iOS apps.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://citadellabs.app">
-<meta property="og:image" content="https://citadellabs.app/logo.png">
-<link rel="icon" href="/logo.png">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Citadel Labs — quietly useful iOS apps. Your data stays on your device.">
+<link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 <style>
-:root {
-  --navy: #0f1b2d;
-  --paper: #fbfaf7;
-  --ink: #0f1b2d;
-  --ink-soft: #556070;
-  --rule-light: rgba(251, 250, 247, 0.12);
-  --rule: rgba(15, 27, 45, 0.08);
-}
+  /* ==========================================================================
+     Citadel Labs — Foundations (inlined)
+     Navy + paper. Inter only. Hairline rules.
+     ========================================================================== */
+  :root {
+    --navy:        #0f1b2d;
+    --paper:       #fbfaf7;
+    --ink:         #0f1b2d;
+    --ink-soft:    #556070;
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    --rule:              rgba(15, 27, 45, 0.08);
+    --rule-strong:       rgba(15, 27, 45, 0.14);
+    --rule-light:        rgba(251, 250, 247, 0.12);
+    --rule-light-strong: rgba(251, 250, 247, 0.22);
 
-html { scroll-behavior: smooth; }
+    --paper-70: rgba(251, 250, 247, 0.70);
+    --paper-55: rgba(251, 250, 247, 0.55);
+    --paper-40: rgba(251, 250, 247, 0.40);
 
-body {
-  font-family: 'Inter', -apple-system, sans-serif;
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.6;
-  font-weight: 400;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, Oxygen, Ubuntu, sans-serif;
 
-.serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+    --ease:     cubic-bezier(0.22, 0.61, 0.36, 1);
+    --dur-base: 200ms;
+  }
 
-nav {
-  padding: 28px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-nav .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--paper);
-  text-decoration: none;
-}
-nav .logo img {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-}
-nav .logo span {
-  font-family: 'Instrument Serif', serif;
-  font-size: 20px;
-}
-nav .links {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  font-size: 14px;
-  color: var(--paper);
-}
-nav a {
-  color: inherit;
-  text-decoration: none;
-  opacity: 0.75;
-  transition: opacity 0.2s;
-}
-nav a:hover { opacity: 1; }
-nav .ig {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  opacity: 0.6;
-}
-nav .ig:hover { opacity: 1; }
-nav .ig svg { width: 16px; height: 16px; }
+  /* Reset / base */
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv11";
+  }
+  a { color: inherit; text-decoration: none; }
+  em { font-style: normal; color: var(--ink-soft); }
 
-.wrap {
-  max-width: 820px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
+  /* ---------- Nav ---------- */
+  .site-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 40px; color: var(--paper);
+  }
+  .site-nav .wordmark {
+    font: 600 18px/1 var(--font-sans);
+    letter-spacing: -0.01em; color: var(--paper);
+  }
+  .site-nav .links { display: flex; gap: 28px; align-items: center; font-size: 14px; }
+  .site-nav a {
+    color: var(--paper); opacity: 0.72;
+    transition: opacity var(--dur-base) var(--ease);
+  }
+  .site-nav a:hover { opacity: 1; }
+  .site-nav .ig {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:32px; height:32px; opacity: 0.6;
+  }
+  .site-nav .ig:hover { opacity: 1; }
+  .site-nav .ig svg { width: 16px; height: 16px; }
 
-/* ————— Hero ————— */
-.hero {
-  background: var(--navy);
-  color: var(--paper);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.hero-inner {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 60px 0 60px;
-}
-.hero h1 {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(40px, 6vw, 64px);
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-  margin-bottom: 28px;
-}
-.hero h1 em {
-  font-style: italic;
-  opacity: 0.7;
-}
-.hero p.lede {
-  font-size: 17px;
-  line-height: 1.6;
-  max-width: 500px;
-  color: rgba(251, 250, 247, 0.7);
-  margin-bottom: 64px;
-}
+  /* ---------- Layout ---------- */
+  .wrap { max-width: 820px; margin: 0 auto; padding: 0 40px; }
 
-/* ————— Apps in hero ————— */
-.apps-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  padding-top: 40px;
-  border-top: 1px solid var(--rule-light);
-}
-.app {
-  display: flex;
-  flex-direction: column;
-}
-.app-top {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-.app-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-.app-num {
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(251, 250, 247, 0.4);
-}
-.app-name {
-  font-family: 'Instrument Serif', serif;
-  font-size: 26px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--paper);
-  margin-bottom: 14px;
-}
-.app-name .sub {
-  display: block;
-  font-style: italic;
-  color: rgba(251, 250, 247, 0.55);
-  font-size: 0.75em;
-  margin-top: 2px;
-}
-.app-desc {
-  font-size: 14.5px;
-  line-height: 1.6;
-  color: rgba(251, 250, 247, 0.7);
-  margin-bottom: 22px;
-  flex: 1;
-}
-.app-links {
-  display: flex;
-  gap: 20px;
-  font-size: 13px;
-}
-.app-links a {
-  color: var(--paper);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(251, 250, 247, 0.4);
-  padding-bottom: 2px;
-  transition: border-color 0.2s;
-}
-.app-links a:hover { border-color: var(--paper); }
-.app-links a.muted {
-  color: rgba(251, 250, 247, 0.55);
-  border-color: rgba(251, 250, 247, 0.15);
-}
+  /* ---------- Hero ---------- */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; background: var(--navy); color: var(--paper); }
+  .hero-inner {
+    flex: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 60px 0;
+  }
+  .hero h1 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-style: normal;
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 28px;
+    max-width: 640px;
+    color: var(--paper);
+  }
+  .hero h1 .soft {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--paper-55);
+  }
+  .hero .lede {
+    font-size: 17px; line-height: 1.6;
+    max-width: 520px; color: var(--paper-70);
+    margin: 0 0 64px;
+  }
 
-/* ————— Sections ————— */
-section { padding: 120px 0; }
+  /* ---------- App shelf ---------- */
+  .apps {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    padding-top: 40px; border-top: 1px solid var(--rule-light);
+  }
+  .app-top { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .app-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.28);
+  }
+  .app-name {
+    font: 600 22px/1.15 var(--font-sans);
+    letter-spacing: -0.01em; color: var(--paper); margin-bottom: 2px;
+  }
+  .app-sub  {
+    font: 400 14px/1.2 var(--font-sans);
+    color: var(--paper-55); margin-bottom: 14px;
+  }
+  .app-desc {
+    font: 400 14.5px/1.6 var(--font-sans);
+    color: var(--paper-70); margin: 0 0 22px;
+    max-width: 360px;
+  }
+  .app-links { display: flex; gap: 20px; font-size: 13px; }
+  .app-links a {
+    color: var(--paper);
+    border-bottom: 1px solid var(--rule-light-strong);
+    padding-bottom: 2px;
+    transition: border-color var(--dur-base) var(--ease);
+  }
+  .app-links a:hover { border-bottom-color: var(--paper); }
+  .app-links a.muted { color: var(--paper-55); border-bottom-color: var(--rule-light); }
+  .app-links a.muted:hover { color: var(--paper); border-bottom-color: var(--paper-55); }
 
-.label {
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 24px;
-}
+  /* ---------- Sections ---------- */
+  section { padding: 120px 0; }
+  .label {
+    font: 500 12px/1 var(--font-sans); letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-soft); margin-bottom: 24px;
+  }
+  .lede-block {
+    font: 500 28px/1.35 var(--font-sans); letter-spacing: -0.01em;
+    color: var(--ink); max-width: 640px; margin: 0;
+  }
+  .lede-block .soft { color: var(--ink-soft); font-weight: 400; }
+  p.prose {
+    font: 400 16px/1.75 var(--font-sans);
+    color: var(--ink-soft); max-width: 600px; margin: 28px 0 0;
+  }
+  p.prose strong { color: var(--ink); font-weight: 500; }
 
-.lede {
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(22px, 3vw, 28px);
-  line-height: 1.4;
-  color: var(--ink);
-  max-width: 640px;
-}
-.lede em { font-style: italic; color: var(--ink-soft); }
+  /* ---------- Privacy (navy) ---------- */
+  .privacy { background: var(--navy); color: var(--paper); }
+  .privacy .label { color: var(--paper-55); }
+  .privacy .lede-block { color: var(--paper); }
+  .privacy .lede-block .soft { color: var(--paper-55); }
+  .privacy p.prose { color: var(--paper-70); }
+  .privacy p.prose strong { color: var(--paper); }
+  .tenets {
+    margin-top: 64px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px;
+  }
+  .tenet { padding-top: 20px; border-top: 1px solid var(--rule-light); }
+  .tenet h4 {
+    font: 500 19px/1.3 var(--font-sans); letter-spacing: -0.005em;
+    color: var(--paper); margin: 0 0 8px;
+  }
+  .tenet p  {
+    font: 400 14px/1.6 var(--font-sans);
+    color: var(--paper-70); margin: 0;
+  }
 
-p.prose {
-  font-size: 16px;
-  line-height: 1.75;
-  color: var(--ink-soft);
-  max-width: 600px;
-  margin-top: 28px;
-}
-p.prose strong { color: var(--ink); font-weight: 500; }
+  /* ---------- Contact (paper) ---------- */
+  .contact { background: var(--paper); color: var(--ink); }
+  .contact a.email {
+    display: inline-block;
+    font: 500 28px/1 var(--font-sans); letter-spacing: -0.01em;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink-soft);
+    padding-bottom: 4px; margin-top: 32px;
+    transition: opacity var(--dur-base) var(--ease);
+  }
+  .contact a.email:hover { opacity: 0.6; }
 
-/* ————— Privacy section ————— */
-.privacy {
-  background: var(--navy);
-  color: var(--paper);
-}
-.privacy .label { color: rgba(251, 250, 247, 0.5); }
-.privacy .lede { color: var(--paper); }
-.privacy .lede em { color: rgba(251, 250, 247, 0.55); }
-.privacy p.prose { color: rgba(251, 250, 247, 0.75); }
-.privacy p.prose strong { color: var(--paper); }
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--navy); color: var(--paper-55);
+    padding: 40px 0; font-size: 13px;
+    border-top: 1px solid var(--rule-light);
+  }
+  footer .wrap {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 20px; flex-wrap: wrap;
+  }
+  footer .links-row { display: flex; align-items: center; gap: 24px; }
+  footer a {
+    color: var(--paper-55);
+    transition: color var(--dur-base) var(--ease);
+  }
+  footer a:hover { color: var(--paper); }
+  footer .social {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px;
+  }
+  footer .social svg { width: 14px; height: 14px; }
 
-.tenets {
-  margin-top: 56px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px 48px;
-}
-.tenet {
-  padding-top: 20px;
-  border-top: 1px solid var(--rule-light);
-}
-.tenet h4 {
-  font-family: 'Instrument Serif', serif;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  color: var(--paper);
-  margin-bottom: 8px;
-  font-weight: 400;
-}
-.tenet p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(251, 250, 247, 0.65);
-}
+  /* ---------- Reveal ---------- */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ————— Contact ————— */
-.contact { background: var(--paper); color: var(--ink); }
-.contact a.email {
-  display: inline-block;
-  font-family: 'Instrument Serif', serif;
-  font-size: clamp(22px, 3vw, 32px);
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--ink-soft);
-  padding-bottom: 4px;
-  margin-top: 32px;
-  transition: opacity 0.2s;
-}
-.contact a.email:hover { opacity: 0.6; }
-
-/* ————— Footer ————— */
-footer {
-  background: var(--navy);
-  color: rgba(251, 250, 247, 0.5);
-  padding: 40px 0;
-  font-size: 13px;
-  border-top: 1px solid var(--rule-light);
-}
-footer .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-footer .links-row { display: flex; align-items: center; gap: 20px; }
-footer a {
-  color: rgba(251, 250, 247, 0.5);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-footer a:hover { color: var(--paper); }
-footer .social { display: inline-flex; align-items: center; }
-footer .social svg { width: 14px; height: 14px; }
-
-/* ————— Reveal ————— */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ————— Responsive ————— */
-@media (max-width: 720px) {
-  nav { padding: 20px 24px; }
-  nav .links { gap: 16px; font-size: 13px; }
-  .wrap { padding: 0 24px; }
-  .hero-inner { padding: 40px 0 48px; }
-  .hero p.lede { margin-bottom: 40px; }
-  .apps-grid { grid-template-columns: 1fr; gap: 40px; padding-top: 32px; }
-  section { padding: 80px 0; }
-  .tenets { grid-template-columns: 1fr; gap: 32px; margin-top: 40px; }
-  footer .wrap { flex-direction: column; gap: 14px; text-align: center; }
-  footer .links-row { flex-wrap: wrap; justify-content: center; gap: 14px; }
-}
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px) {
+    .site-nav { padding: 20px 24px; }
+    .site-nav .links { gap: 20px; }
+    .wrap { padding: 0 24px; }
+    .hero-inner { padding: 40px 0 48px; }
+    .hero .lede { margin-bottom: 40px; }
+    .apps { grid-template-columns: 1fr; gap: 40px; padding-top: 32px; }
+    section { padding: 80px 0; }
+    .tenets { grid-template-columns: 1fr; gap: 32px; margin-top: 48px; }
+    .contact a.email { font-size: 22px; }
+    footer .wrap { flex-direction: column; gap: 16px; text-align: center; }
+  }
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <nav>
-    <a href="/" class="logo">
-      <img src="/logo.png" alt="Citadel Labs">
-      <span>Citadel Labs</span>
-    </a>
+  <nav class="site-nav">
+    <a href="/" class="wordmark">Citadel Labs</a>
     <div class="links">
       <a href="#privacy">Privacy</a>
       <a href="#contact">Contact</a>
@@ -346,95 +254,71 @@ footer .social svg { width: 14px; height: 14px; }
 
   <div class="hero-inner">
     <div class="wrap">
-      <h1 class="serif">
-        Quietly useful<br>
-        software, <em>made&nbsp;simple.</em>
-      </h1>
-      <p class="lede">
-        Focused iOS apps. Your data stays on your device — not on our servers. No trackers. No ads inside. No dark patterns. Just tools.
-      </p>
+      <h1>Quietly useful software, <span class="soft">made simple.</span></h1>
+      <p class="lede">Focused iOS apps. Your data stays on your device — not on our servers. No trackers. No ads inside. No dark patterns. Just tools.</p>
 
-      <div class="apps-grid">
+      <div class="apps">
         <div class="app">
           <div class="app-top">
-            <img class="app-icon" src="/billkeep-icon.png" alt="BillKeep">
-            <div class="app-num">No. 01</div>
+            <img class="app-icon" src="billkeep-icon.png" alt="BillKeep icon" width="52" height="52">
           </div>
-          <div class="app-name serif">
-            BillKeep
-            <span class="sub">Smart Bill Tracker</span>
-          </div>
-          <p class="app-desc">
-            Point your camera at any bill — the app reads the merchant, amount, and due date for you. Syncs through your iCloud.
-          </p>
+          <div class="app-name">BillKeep</div>
+          <div class="app-sub">Smart Bill Tracker</div>
+          <p class="app-desc">Point your camera at any bill — the app reads the merchant, amount, and due date for you. Syncs through your iCloud.</p>
           <div class="app-links">
-            <a href="https://apps.apple.com/app/id6761000879">App Store</a>
+            <a href="https://apps.apple.com/app/id6761000879" target="_blank" rel="noopener">App Store</a>
             <a class="muted" href="/billkeep-privacy">Privacy</a>
           </div>
         </div>
 
         <div class="app">
           <div class="app-top">
-            <img class="app-icon" src="/rebill-icon.png" alt="Rebill">
-            <div class="app-num">No. 02</div>
+            <img class="app-icon" src="rebill-icon.png" alt="Rebill icon" width="52" height="52">
           </div>
-          <div class="app-name serif">
-            Rebill
-            <span class="sub">Manage Subscriptions</span>
-          </div>
-          <p class="app-desc">
-            Every subscription in one place. Catch price hikes, track free trials, cancel what you forgot about.
-          </p>
+          <div class="app-name">Rebill</div>
+          <div class="app-sub">Manage Subscriptions</div>
+          <p class="app-desc">Every subscription in one place. Surface price changes, track free trials, see what renews next.</p>
           <div class="app-links">
-            <a href="https://apps.apple.com/app/id6760693339">App Store</a>
+            <a href="https://apps.apple.com/app/id6760693339" target="_blank" rel="noopener">App Store</a>
             <a class="muted" href="/rebill-privacy">Privacy</a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </header>
 
-<!-- PRIVACY -->
 <section id="privacy" class="privacy">
   <div class="wrap reveal">
     <div class="label">On Privacy</div>
-    <p class="lede serif">
-      Your data is <em>yours.</em> The apps are built so we never see it.
-    </p>
-    <p class="prose">
-      Most financial apps route your data through their servers — for analytics, for insights, for training their models. Citadel Labs doesn't do that. Your bills and subscriptions live on your iPhone and sync through <strong>your own iCloud account</strong>. We don't keep a database of it. We couldn't hand it over if anyone asked.
-    </p>
+    <p class="lede-block">Your data is yours. <span class="soft">The apps are built so we never see it.</span></p>
+    <p class="prose">Most financial apps route your data through their servers — for analytics, for insights, for training their models. Citadel Labs does not. Bills and subscriptions live on your iPhone and sync through <strong>your own iCloud account</strong>. We do not keep a database of it.</p>
 
     <div class="tenets">
       <div class="tenet">
         <h4>No analytics</h4>
-        <p>No Mixpanel, no Amplitude, no Firebase. We don't watch how you use the app. If something breaks, you email us.</p>
+        <p>No Mixpanel, no Amplitude, no Firebase.</p>
       </div>
       <div class="tenet">
         <h4>No ads inside</h4>
-        <p>You paid for the app, or you're on a free tier. Either way, you're not the product.</p>
+        <p>You are not the product.</p>
       </div>
       <div class="tenet">
         <h4>No server database</h4>
-        <p>Your data lives on your device and your iCloud. We don't store a copy anywhere.</p>
+        <p>Your data lives on your device and your iCloud.</p>
       </div>
       <div class="tenet">
         <h4>No dark patterns</h4>
-        <p>One tap to cancel a subscription. Paywalls that say what you're paying for. No "are you sure?" loops.</p>
+        <p>One tap to cancel. Paywalls that say what you are paying for.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap reveal">
     <div class="label">Get in touch</div>
-    <p class="lede serif">
-      Questions, feedback, bug reports — <em>all welcome.</em>
-    </p>
+    <p class="lede-block">Questions, feedback, bug reports — <span class="soft">all welcome.</span></p>
     <a class="email" href="mailto:support@citadellabs.app">support@citadellabs.app</a>
   </div>
 </section>
